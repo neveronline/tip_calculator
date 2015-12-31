@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var slider: UISlider!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +24,14 @@ class SettingsViewController: UIViewController {
     }
     
 
+    @IBAction func scorlling(sender: AnyObject) {
+        var percentage :Int = Int(slider.value)
+        var copy :Double = Double(percentage)/100
+        label.text = "\(percentage)%"
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setDouble(copy, forKey: "customize")
+        defaults.synchronize()
+    }
     /*
     // MARK: - Navigation
 
